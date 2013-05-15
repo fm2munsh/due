@@ -2,9 +2,11 @@ class GroupsController < ApplicationController
 	include SessionsHelper
 	def index
 	end
+
 	def new
 		@group = Group.new
 	end
+
 	def create
 		@group = Group.new params[:group]
 	end
@@ -17,4 +19,8 @@ class GroupsController < ApplicationController
 		end
 		redirect_to group_path @group
 	end
+
+  def show
+    @group = Group.find(params[:id])
+  end
 end
