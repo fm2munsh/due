@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 	include SessionsHelper
+	skip_before_filter :check_login
 
 	def new
 		if signed_in?

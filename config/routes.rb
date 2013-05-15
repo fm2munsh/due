@@ -3,7 +3,11 @@ Due::Application.routes.draw do
 		root :to 		=> 'home#index'
 		match '/' 		=> 'home#index'
 
-	resources :groups
+	resources :groups do
+		member do
+			match "/join" => 'groups#join'
+		end
+	end
 	resources :users
 	resources :sessions # not sure why?
 	resources :posts, only: [:new, :delete]
