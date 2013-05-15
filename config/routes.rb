@@ -1,12 +1,14 @@
 Due::Application.routes.draw do
 
-	resources :users
 	resources :home
+		root :to => 'home#index'
+		match '/' => 'home#index'
+
 	resources :sessions
+		get "logout" => "sessions#destroy"
+		get "login" => "sessions#new"
 
-	root :to => 'home#index'
-	match '/' => 'home#index'
-
-
+	resources :users
+		get "signup" => "users#new"
 
 end
