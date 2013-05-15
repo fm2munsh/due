@@ -1,6 +1,12 @@
 Due::Application.routes.draw do
-  root :to => 'home#index'
-  match '/' => 'home#index'
 
-  resources :home
+	resources :users
+	resources :home
+	resources :sessions
+
+	root :to => 'home#index'
+	match '/' => 'home#index'
+
+
+
 end
