@@ -1,3 +1,5 @@
 class Admin < ActiveRecord::Base
-  attr_accessible :email, :password_digest
+  attr_accessible :email, :password
+  :has_secure_password
+  has_and_belongs_to_many :groups
 end

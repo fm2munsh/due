@@ -11,13 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20130515190035) do
+=======
 ActiveRecord::Schema.define(:version => 20130515191025) do
+>>>>>>> 80528c79409b9af7e9a280ca288e8f19dd6b16e0
 
   create_table "admins", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "admins_groups", :id => false, :force => true do |t|
+    t.integer "admin_id"
+    t.integer "group_id"
   end
 
   create_table "groups", :force => true do |t|
