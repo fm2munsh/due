@@ -1,5 +1,4 @@
 Due::Application.routes.draw do
-	
 	resources :home
 		root :to 		=> 'home#index'
 		match '/' 		=> 'home#index'
@@ -13,5 +12,4 @@ Due::Application.routes.draw do
 
 	resources :groups
   		get "groups" 	=> "groups#index"
-
 end
