@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 			sign_in user
 			redirect_to '/'
 		else
+			puts "Login error"
 			if user.nil?
 				flash.now[:error] = 'No user with that name' 
 			else 
