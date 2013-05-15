@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Due</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>Due</title>
+
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	
+
+	<% if signed_in? %>
+		<%= render 'layouts/session_header' %>
+	<% else %>
+		<%= render 'layouts/header' %>
+	<% end %>
+
 </head>
 <body>
 
-<%= yield %>
+	<%= render 'shared/flash_messages' if !flash.empty? %>
 
+	<%= yield %>
+	
+
+	<%= render 'layouts/footer' %>
 </body>
 </html>
