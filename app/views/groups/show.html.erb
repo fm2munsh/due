@@ -17,6 +17,7 @@
   <h1> <%= @group.name %> </h1>
 </div>
 <div>
+
 	<div class="accordion" id="accordion2">
 	  <div class="accordion-group">
 	    <div class="accordion-heading">
@@ -32,7 +33,9 @@
 	    </div>
 	  </div>
 	</div>
+
 	<div id="posts-list">
 		<%= render @group.posts %>
 	</div>
+	
 </div>
