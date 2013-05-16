@@ -1,8 +1,4 @@
-<div>
-<p>
-  <%= link_to post.name, edit_post_path(post) %>
-  Posted <%= time_ago_in_words(post.created_at) %> ago.
-  <br>
-
+<p class = 'post'>
+	<%= link_to post.name, edit_post_path(post) %>
+	Posted <%= time_ago_in_words(post.created_at) %> ago.
 </p>
-<div>
