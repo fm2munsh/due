@@ -1,11 +1,24 @@
-<div id = "signinForm" class = 'form'>
+<div class="row-fluid">
 
 	<%= form_for(:session, url: sessions_path) do |f| %>
+	
 
-	  <%= f.text_field  :name %>
-	  <%= f.password_field  :password %>
-	  <%= f.submit :value => 'Sign In', :class => 'btn' %>
+	<div id = "signinForm"> 
 
-	<% end %>
+		<legend>Sign In</legend>
+
+		<%= f.label :name, 'User Name' %>
+		<%= f.text_field  :name %>
+
+		<%= f.label :password, 'Password' %>
+		<%= f.password_field  :password %>
+
+		<%= f.submit 'Sign In', :class => 'btn' %>
+
+		<br>
+		<br>
+
+		<% end %>
+	</div>
 
 </div>

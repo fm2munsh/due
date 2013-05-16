@@ -2,14 +2,21 @@
 
 $(document).ready(function(){
 
+var timeOut;
+var innnerTimeOut1;
+var innnerTimeOut2;
+
   $('#sign-in').hover(function(){
+    clearInterval(timeOut);
+    clearInterval(innnerTimeOut1);
+    clearInterval(innnerTimeOut2);
     that = $(this);
 
     that.animate({
       width: "475px"
     }, 500);
 
-    setTimeout(function(){
+    timeOut = setTimeout(function(){
 
       $('#session_form').show(200);
       $('#session_form').animate({
@@ -29,43 +36,51 @@ $(document).ready(function(){
       }, 400);
     }, 100);
 
-    
+
   });
 
   $('#sign-in').mouseleave(function(){
+    clearInterval(timeOut);
+    clearInterval(innnerTimeOut1);
+    clearInterval(innnerTimeOut2);
+    hideSignIn();
+  });
 
-    that = $(this);
-    if (!($("#session_name").is(":focus") || $("#session_password").is(":focus"))) {
-      setTimeout(function(){
+  function hideSignIn () {
+    that = $('#sign-in');
 
-        setTimeout(function(){ 
-          that.animate({
-            width: "75px"
-          }, 500);
+      timeOut = setTimeout(function(){
 
-        }, 100);
+        if (!($("#session_name").is(":focus") || $("#session_password").is(":focus") || $('#session_form').is(":focus"))) { 
 
-        
-        $('#session_form').animate({
-          width: "0px"
-        }, 500);
-        $('#session_name').animate({
-          width: "0px"
-        }, 500);
-        $('#session_password').animate({
-          width: "0px"  
-        }, 500);
-        setTimeout(function(){
-         $('#session_form').hide();
-         $('#session_name').hide();
-         $('#session_password').hide();
-       }, 500);
+          innnerTimeOut1 = setTimeout(function(){ 
+              that.animate({
+                width: "75px"
+              }, 500);
 
+            }, 100);
+
+
+            $('#session_form').animate({
+              width: "0px"
+            }, 500);
+            $('#session_name').animate({
+              width: "0px"
+            }, 500);
+            $('#session_password').animate({
+              width: "0px"  
+            }, 500);
+          innnerTimeOut2 = setTimeout(function(){
+             $('#session_form').hide();
+             $('#session_name').hide();
+             $('#session_password').hide();
+            }, 500);
+
+        }
 
       }, 1000);
+
     }
-    
-  });
 
 });
 
@@ -94,7 +109,7 @@ $(document).ready(function(){
 
           <%= f.text_field  :name %>
           <%= f.password_field  :password %>
-          
+
           <%= f.submit :value => 'Sign In', :class => 'btn', :id => 'signIn' %>
 
           <% end %>
