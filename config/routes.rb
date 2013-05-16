@@ -12,7 +12,7 @@ Due::Application.routes.draw do
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
 
-	resources :posts, only: [:new, :delete, :edit] do
+	resources :posts do
 		collection do
 			match "/ajaxnew" => "posts#ajaxnew"
 		end

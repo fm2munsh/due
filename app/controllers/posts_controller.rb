@@ -13,7 +13,11 @@ class PostsController < ApplicationController
 		end
 		@post.save
 	end
-
+	def update
+		@post = Post.find params[:id]
+		@post.update_attributes(params[:post])
+		redirect_to @post.group
+	end
 	def delete
 		@post = Post.find(params[:id])
 		@post.delete
