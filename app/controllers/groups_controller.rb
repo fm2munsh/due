@@ -9,6 +9,8 @@ class GroupsController < ApplicationController
 
 	def create
 		@group = Group.new params[:group]
+		@group.save
+		redirect_to @group
 	end
 	def join
 		@user = current_user
