@@ -11,7 +11,7 @@ Due::Application.routes.draw do
 
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
-
+  resources :tags
 	resources :posts
 	match "/post/create" => "posts#create"
 
