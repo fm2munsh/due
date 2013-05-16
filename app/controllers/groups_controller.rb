@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 	def create
 		@group = Group.new params[:group]
 		@group.save
+		@group.users << current_user
 		redirect_to @group
 	end
 	def join
