@@ -8,10 +8,13 @@ Due::Application.routes.draw do
 			match "/join" => 'groups#join'
 		end
 	end
+
 	resources :users
-	resources :sessions # not sure why?
+	resources :sessions, only: [:new, :create, :destroy]
 	resources :posts, only: [:new, :delete]
+
 	match "signup" => "users#new", as: "signup"
 	match "logout" => "sessions#destroy", as: "logout"
 	match "login" => "sessions#new", as: "login"
+
 end
