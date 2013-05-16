@@ -1,0 +1,9 @@
+<div>
+  <%= form_for(@post) do |f| %>
+    <div class = "field">
+      <%= f.label :name, 'Post Name' %>
+      <%= f.text_field :name, :placeholder => "Insert Name Here"%>
+      <br>
+      <%= f.submit "Edit Post", class: "btn btn-large btn-primary" %></div>
+  <% end %>
+</div>
