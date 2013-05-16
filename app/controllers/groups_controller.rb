@@ -16,9 +16,14 @@ class GroupsController < ApplicationController
 	def join
 		@user = current_user
 		@group = Group.find(params[:id])
-		if @group.password == params[:password]
-			@group.users << @user
-			@user.groups << @group
+		if @group.users.include? @user
+			flash[:error] = "Already in Group"
+		else
+			if @group.password == params[:password]
+				@group.users << @user
+			else
+				flash[:error] = "Incorrect group password"
+			end
 		end
 		redirect_to group_path @group
 	end

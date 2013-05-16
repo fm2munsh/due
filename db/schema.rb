@@ -13,9 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130515230846) do
 
-  create_table "admins_groups", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+  create_table "admins", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "admins_groups", :id => false, :force => true do |t|
