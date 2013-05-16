@@ -1,3 +1,77 @@
+<script>
+
+$(document).ready(function(){
+
+  $('#sign-in').hover(function(){
+    that = $(this);
+
+    that.animate({
+      width: "475px"
+    }, 500);
+
+    setTimeout(function(){
+
+      $('#session_form').show(200);
+      $('#session_form').animate({
+        width: "350px"
+      }, 400);
+
+      $('#session_name').show();
+      $('#session_name').animate({
+        width: "175px",
+        display: 'inline'
+      }, 400);
+
+      $('#session_password').show();
+      $('#session_password').animate({
+        width: "175px",
+        display: 'inline'
+      }, 400);
+    }, 100);
+
+    
+  });
+
+  $('#sign-in').mouseleave(function(){
+
+    that = $(this);
+    if (!($("#session_name").is(":focus") || $("#session_password").is(":focus"))) {
+      setTimeout(function(){
+
+        setTimeout(function(){ 
+          that.animate({
+            width: "75px"
+          }, 500);
+
+        }, 100);
+
+        
+        $('#session_form').animate({
+          width: "0px"
+        }, 500);
+        $('#session_name').animate({
+          width: "0px"
+        }, 500);
+        $('#session_password').animate({
+          width: "0px"  
+        }, 500);
+        setTimeout(function(){
+         $('#session_form').hide();
+         $('#session_name').hide();
+         $('#session_password').hide();
+       }, 500);
+
+
+      }, 1000);
+    }
+    
+  });
+
+});
+
+</script>
+
+
 <div id="header">
   <div class="navbar navbar-fixed-top">
     <div class="container-fluid">
@@ -8,19 +82,22 @@
 
       <ul class="nav pull-right">
         <li>
-            <form class="navbar-search pull-right">
-              <input type="text" class="search-query" placeholder="Search">
-            </form>
+          <form class="navbar-search pull-right">
+            <input type="text" class="search-query" placeholder="Search">
+          </form>
         </li>
 
         <li class="divider-vertical"></li>
 
-        <li class="">
+        <li id="sign-in">
+          <%= form_for(:session, url: sessions_path) do |f| %>
+
+          <%= f.text_field  :name %>
+          <%= f.password_field  :password %>
           
-            <a href="/login">
-                Sign In
-            </a>
-          
+          <%= f.submit :value => 'Sign In', :class => 'btn', :id => 'signIn' %>
+
+          <% end %>
         </li>
 
         

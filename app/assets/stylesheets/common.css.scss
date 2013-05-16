@@ -1,0 +1,50 @@
+// HEADER STYLING 
+
+#header {
+	border-bottom: 1px solid #DDD;
+	padding-bottom: 40px;
+	margin-bottom: 10px;
+}
+
+#sign-in {
+	margin-left:-10px;
+	margin-right:-20px;
+	padding: 0px 10px;
+	width: 75px;
+}
+
+#sign-in input[type='submit']{
+	margin-top: 5px;
+	float:right;
+}
+
+#sign-in 	
+	input[type='text'],
+	input[type='password']
+	{
+		margin-top: 5px;
+		margin-bottom: -5px;
+		display: none;
+		width: 0px;
+		overflow:hidden;
+	}
+
+#sign-in:hover {
+	cursor: pointer;
+}
+
+// END HEADER
+
+// LOGIN STYLING 
+
+#signinForm {
+	width: 500px;
+	padding: 20px 10px;
+	margin: auto;
+	border: 1px solid #EEE;
+	border-radius: 5px;
+}
+
+// END LOGIN 
+
+

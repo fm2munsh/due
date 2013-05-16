@@ -1,7 +1,11 @@
-<%= form_for(:session, url: sessions_path) do |f| %>
+<div id = "signinForm" class = 'form'>
 
-  <%= f.text_field  :name %>
-  <%= f.password_field  :password %>
-  <%= f.submit %>
+	<%= form_for(:session, url: sessions_path) do |f| %>
 
-<% end %>
+	  <%= f.text_field  :name %>
+	  <%= f.password_field  :password %>
+	  <%= f.submit :value => 'Sign In', :class => 'btn' %>
+
+	<% end %>
+
+</div>
