@@ -1,6 +1,38 @@
+<script type="text/javascript">
+	function submitPost(group_id) {
+		var name = $("#new-post-name").val()
+		$.ajax({
+		    url: "/posts/ajaxnew",
+		    type: "GET",
+		    data: 'group_id='+group_id+"&name="+name,
+		    success: function(data) {
+		        $("#new-post-name").val( "")
+		        $('#posts-list').prepend(data)
+		    },
+		})
+	}
+</script>
+
 <div>
   <h1> <%= @group.name %> </h1>
 </div>
 <div>
-<%= render @group.posts %>
+	<div class="accordion" id="accordion2">
+	  <div class="accordion-group">
+	    <div class="accordion-heading">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	        New Post
+	      </a>
+	    </div>
+	    <div id="collapseOne" class="accordion-body collapse">
+	      <div class="accordion-inner">
+	        <input id="new-post-name"/>
+	        <button onclick="submitPost(<%= @group.id %>)">Create Post</button> 
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div id="posts-list">
+		<%= render @group.posts %>
+	</div>
 </div>

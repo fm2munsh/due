@@ -10,7 +10,11 @@ Due::Application.routes.draw do
 	end
 	resources :users
 	resources :sessions # not sure why?
-	resources :posts, only: [:new, :delete]
+	resources :posts, only: [:new, :delete] do
+		collection do
+			match "/ajaxnew" => "posts#ajaxnew"
+		end
+	end
 	match "signup" => "users#new", as: "signup"
 	match "logout" => "sessions#destroy", as: "logout"
 	match "login" => "sessions#new", as: "login"

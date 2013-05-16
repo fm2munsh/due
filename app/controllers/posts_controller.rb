@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	include SessionsHelper
 	def new
 		# Should be deprecated eventually
 		@post = Post.new
@@ -6,11 +7,18 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new params[:post]
 		@post.each params[:tags] do |t|
-			Task.new(name: t, post_id: @post.id)		
+			@task = Task.new(name: t, post_id: @post.id)		
+			@task.save
 		end
+		@post.save
 	end
 	def delete
 		@post = Post.find(params[:id])
 		@post.delete
+	end
+	def ajaxnew
+		@post = Post.new(name: params[:name], group_id: params[:group_id])
+		@post.save
+		render @post
 	end
 end
