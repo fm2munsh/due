@@ -1,0 +1,8 @@
+<div>
+  <h1> List of Existing Groups</h1>
+  <ul>
+    <% @group.each do |group| %>
+      <li> <%=link_to group.name, group_path(group) %> </li>
+    <% end %>
+  <ul>
+</div>

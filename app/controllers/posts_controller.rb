@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new params[:post]
 		@post.each params[:tags] do |t|
-			Task.new(name: t, post_id: @post.id)			
+			Task.new(name: t, post_id: @post.id)		
 		end
 	end
 	def delete

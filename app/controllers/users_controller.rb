@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	
 	include SessionsHelper
-	before_filter :check_login, :only => ['edit', 'update']
+	skip_before_filter :check_login, :only => ['new', 'create']
 	
   def new
   	@user = User.new

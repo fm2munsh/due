@@ -3,13 +3,15 @@ Due::Application.routes.draw do
 		root :to 		=> 'home#index'
 		match '/' 		=> 'home#index'
 
-	resources :sessions
-		get "logout" 	=> "sessions#destroy"
-		get "login" 	=> "sessions#new"
-
+	resources :groups do
+		member do
+			match "/join" => 'groups#join'
+		end
+	end
 	resources :users
-		get "signup" 	=> "users#new"
-
-	resources :groups
-  		get "groups" 	=> "groups#index"
+	resources :sessions # not sure why?
+	resources :posts, only: [:new, :delete]
+	match "signup" => "users#new", as: "signup"
+	match "logout" => "sessions#destroy", as: "logout"
+	match "login" => "sessions#new", as: "login"
 end
