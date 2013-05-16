@@ -1,19 +1,36 @@
-<%= form_for @user do |f| %>
+<div class="row-fluid">
 
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
+
+    <%= form_for @user ,:html => { :class => 'form-horizontal span12' } do |f| %>
+    
+    <div id = "signupForm"> 
+      <legend>Sign Up</legend>
+
+      <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+
+      <%= f.label :name, 'User Name' %>
+      <%= f.text_field  :name %>
+
+      <%= f.label :password, 'Password' %>
+      <%= f.password_field  :password, :placeholder => "Password"  %>
+
+      <%= label_tag :password_confirmation, 'Password Confirmation' %>
+      <%= password_field_tag  :password_confirmation, nil, :placeholder => "Password Confirmation" %>
+
+      <%= f.submit 'Sign Up', :class => 'btn' %>
+      <br>
+      <br>
+      <% end %>
     </div>
-  <% end %>
 
-  <%= f.text_field  :name %>
-  <%= f.password_field  :password %>
-  <%= password_field_tag  :password_confirmation %>
-  <%= f.submit %>
-
-<% end %>
+  </div>

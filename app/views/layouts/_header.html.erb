@@ -2,14 +2,21 @@
 
 $(document).ready(function(){
 
+var timeOut;
+var innnerTimeOut1;
+var innnerTimeOut2;
+
   $('#sign-in').hover(function(){
+    clearInterval(timeOut);
+    clearInterval(innnerTimeOut1);
+    clearInterval(innnerTimeOut2);
     that = $(this);
 
     that.animate({
       width: "475px"
     }, 500);
 
-    setTimeout(function(){
+    timeOut = setTimeout(function(){
 
       $('#session_form').show(200);
       $('#session_form').animate({
@@ -33,17 +40,20 @@ $(document).ready(function(){
   });
 
   $('#sign-in').mouseleave(function(){
+    clearInterval(timeOut);
+    clearInterval(innnerTimeOut1);
+    clearInterval(innnerTimeOut2);
     hideSignIn();
   });
 
   function hideSignIn () {
     that = $('#sign-in');
 
-      setTimeout(function(){
+      timeOut = setTimeout(function(){
 
         if (!($("#session_name").is(":focus") || $("#session_password").is(":focus") || $('#session_form').is(":focus"))) { 
 
-            setTimeout(function(){ 
+          innnerTimeOut1 = setTimeout(function(){ 
               that.animate({
                 width: "75px"
               }, 500);
@@ -60,7 +70,7 @@ $(document).ready(function(){
             $('#session_password').animate({
               width: "0px"  
             }, 500);
-            setTimeout(function(){
+          innnerTimeOut2 = setTimeout(function(){
              $('#session_form').hide();
              $('#session_name').hide();
              $('#session_password').hide();
