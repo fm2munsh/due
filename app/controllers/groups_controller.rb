@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 	include SessionsHelper
 	def index
+		@groups = current_user.groups
 	end
 
 	def new
