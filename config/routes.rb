@@ -20,6 +20,7 @@ Due::Application.routes.draw do
 			match "/create" => "posts#create"
 		end
 	end
+	resources :tags
 
 	match "signup" => "users#new", as: "signup"
 	match "logout" => "sessions#destroy", as: "logout"

@@ -1,3 +1,10 @@
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#new-post').submit(function () {
+			$('#post-submit-button').attr("disabled", true);
+		});
+	});
+</script>
 <div>
 	<h1> <%= @group.name %> </h1>
 	<% if (!@group.users.include? current_user) %>
@@ -6,10 +13,10 @@
 </div>
 <div>
 
-	<form action = '/posts/create' data-remote = 'true'>
+	<form id="new-post" action = '/posts/create' data-remote = 'true'>
 		<input id = 'new-post-name' type = 'text' placeholder = 'Post' name = 'post[name]'>
 		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'>
-		<input type = 'submit' class = 'btn'>
+		<input id='post-submit-button' type = 'submit' class = 'btn'>
 	</form>
 
 	<div id="posts-list">
