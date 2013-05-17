@@ -7,13 +7,19 @@ Due::Application.routes.draw do
 		member do
 			match "/join" => 'groups#join'
 		end
+		collection do
+			match "/create" => "groups#create"
+		end
 	end
-
+	match "/g/:name" => "groups#show_by_name"
 	resources :users
 	resources :sessions, only: [:new, :create, :destroy]
 
-	resources :posts
-	match "/post/create" => "posts#create"
+	resources :posts do
+		collection do
+			match "/create" => "posts#create"
+		end
+	end
 
 	match "signup" => "users#new", as: "signup"
 	match "logout" => "sessions#destroy", as: "logout"

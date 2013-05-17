@@ -1,0 +1,1 @@
+alert("There was an error creating the post")

@@ -6,8 +6,8 @@
 </div>
 <div>
 
-	<form action = '/post/create' data-remote = 'true'>
-		<input id = 'new-post-name' type = 'text' placeholder = 'Post' name = 'name'>
+	<form action = '/posts/create' data-remote = 'true'>
+		<input id = 'new-post-name' type = 'text' placeholder = 'Post' name = 'post[name]'>
 		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'>
 		<input type = 'submit' class = 'btn'>
 	</form>

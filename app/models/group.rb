@@ -4,4 +4,6 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :admins, class_name: 'User', join_table: :admins_groups
   has_many :posts
 
+  validates :name, presence: true, uniqueness: true
+  validates :password, presence: true
 end
