@@ -8,6 +8,12 @@ module SessionsHelper
   	end
   	
   	def signed_in?
-      !session[:user_id].nil?
+      if !session[:user_id].nil? 
+        puts "Cookie exists"
+        return User.exists?(session[:user_id])
+      else
+        puts "No cookie"
+        return false
+      end
   	end
 end

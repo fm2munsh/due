@@ -16,11 +16,16 @@
 </div>
 <div>
 
-	<form id="new-post" action = '/posts/create' data-remote = 'true'>
-		<input id = 'new-post-name' type = 'text' placeholder = 'Post Name' name = 'post[name]'>
-		<input id = 'new-post-body' type = 'textarea' placeholder = 'Body' name = 'post[body]'>
-		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'>
-		<input id='post-submit-button' type = 'submit' class = 'btn' value="Create Post">
+	<form id="new-post" action = '/posts/create' data-remote = 'true' class="center">
+		<span>
+			<input id = 'new-post-name' type = 'text' placeholder = 'Post Name' name = 'post[name]'></input>
+			<br>
+			<textarea id = 'new-post-body' placeholder = 'Body' name = 'post[body]'></textarea>
+		</span>
+		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'></input>
+		<span>
+			<input id='post-submit-button' type = 'submit' class = 'btn' value="Create Post"></input>
+		</span>
 	</form>
 
 	<div id="posts-list">

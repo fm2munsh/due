@@ -27,7 +27,7 @@ Due::Application.routes.draw do
 		end
 	end
 	match "signup" => "users#new", as: "signup"
-	match "logout" => "sessions#destroy", as: "logout"
-	match "login" => "sessions#new", as: "login"
+	match "logout" => "sessions#destroy", as: "signin"
+	match "login" => "sessions#new", as: "signout"
 
 end
