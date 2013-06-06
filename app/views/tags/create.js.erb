@@ -1,0 +1,3 @@
+$("#<%= @tag.post_id %>-new-tag-name").val("");
+$('#<%= @tag.post_id %>-tags-list').append(' <%=escape_javascript(render @tag)%>');
+$('#tag-submit-button').removeAttr('disabled');

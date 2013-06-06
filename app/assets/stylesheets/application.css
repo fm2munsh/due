@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+.tag-div {
+	background: #c2d2e2;
+	margin: 2px;
+	padding: 2px;
+	border-radius: 3px;
+	border: 2px;
+	border-color: #576777;
+}

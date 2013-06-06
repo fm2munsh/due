@@ -14,9 +14,10 @@
 <div>
 
 	<form id="new-post" action = '/posts/create' data-remote = 'true'>
-		<input id = 'new-post-name' type = 'text' placeholder = 'Post' name = 'post[name]'>
+		<input id = 'new-post-name' type = 'text' placeholder = 'Post Name' name = 'post[name]'>
+		<input id = 'new-post-body' type = 'text' placeholder = 'Body' name = 'post[body]'>
 		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'>
-		<input id='post-submit-button' type = 'submit' class = 'btn'>
+		<input id='post-submit-button' type = 'submit' class = 'btn' value="Create Post">
 	</form>
 
 	<div id="posts-list">

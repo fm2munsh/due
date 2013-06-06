@@ -1,3 +1,4 @@
-<span class="tag-div">
+<span class="tag-div" id="<%=tag.id%>-tag-container">
 	<%= tag.name %>
+	<%= link_to "X", tag_path(tag), method: "DELETE", remote: true %>
 </span>
