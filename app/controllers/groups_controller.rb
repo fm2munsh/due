@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
 	include SessionsHelper
 	def index
-		@groups = current_user.groups
+		# @groups = current_user.groups
+		@groups = Group.all
 	end
 
 	def new
@@ -15,14 +16,14 @@ class GroupsController < ApplicationController
 		@group.users << current_user
 		respond_to do |format|
 			if @group.save
-				format.js { render :template => "groups/create.js.erb", :content_type => 'text/javascript' }
+				format.js { render :template => "groups/create", :content_type => 'text/javascript' }
 			else
 				puts "Group did not save"
 				@group.errors.each do |k,e|
 					puts k
 					puts e
 				end
-				format.js { render :template => "groups/error.js.erb", :content_type => 'text/javascript' }
+				format.js { render :template => "groups/error", :content_type => 'text/javascript' }
 			end
 			format.html { redirect_to groups_path }
 		end
