@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :date, :group_id, :name
+  attr_accessible :date, :group_id, :name, :body
   has_many :tags
   belongs_to :group
 

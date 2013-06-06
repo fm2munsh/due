@@ -1,17 +1,19 @@
-
-  <p class = 'post'>
-  	<%= link_to post.name, edit_post_path(post) %>
-    <span id="<%= post.id %>-tags-list">
-    	<%= render post.tags %>
+<div>
+<p class = 'post'>
+	<%= link_to post.name, edit_post_path(post) %>
+  <span id="<%= post.id %>-tags-list">
+  	<%= render post.tags %>
   </span>
-  	<br>
-  	Posted <%= time_ago_in_words(post.created_at) %> ago.
+  <br>
+    <%= raw(post.body) %>
+	<br>
+	Posted <%= time_ago_in_words(post.created_at) %> ago.
 
-      
-    <form action = '/tags/create' data-remote = 'true'>
-      <input id = '<%= post.id %>-new-tag-name' type = 'text' placeholder = 'Name' name = 'tag[name]'>
-      <input type="hidden" value="<%= post.id %>" name='id'></input>
-      <input type = 'submit' class = 'btn' value="Create Tag">
-    </form>
-  </p>
+    
+  <form action = '/tags/create' data-remote = 'true'>
+    <input id = '<%= post.id %>-new-tag-name' type = 'text' placeholder = 'Name' name = 'tag[name]'>
+    <input type="hidden" value="<%= post.id %>" name='id'></input>
+    <input type = 'submit' class = 'btn' value="Create Tag">
+  </form>
+</p>
 </div>

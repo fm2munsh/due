@@ -8,14 +8,17 @@
 <div>
 	<h1> <%= @group.name %> </h1>
 	<% if (!@group.users.include? current_user) %>
-	  	<%= link_to "Join Group", join_group_path %>
+	  	<form id="join-group" action = <%= join_group_path(@group) %> data-remote = 'true'>
+			<input id = 'join-group-password' type = 'text' placeholder = 'Password' name = 'password'>
+			<input id='post-submit-button' type = 'submit' class = 'btn btn-small btn-info' value="Join">
+		</form>
 	<% end %>
 </div>
 <div>
 
 	<form id="new-post" action = '/posts/create' data-remote = 'true'>
 		<input id = 'new-post-name' type = 'text' placeholder = 'Post Name' name = 'post[name]'>
-		<input id = 'new-post-body' type = 'text' placeholder = 'Body' name = 'post[body]'>
+		<input id = 'new-post-body' type = 'textarea' placeholder = 'Body' name = 'post[body]'>
 		<input type = 'hidden' value = <%= @group.id %> name = 'group_id'>
 		<input id='post-submit-button' type = 'submit' class = 'btn' value="Create Post">
 	</form>

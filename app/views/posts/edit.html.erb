@@ -2,8 +2,9 @@
   <%= form_for(@post) do |f| %>
     <div class = "field">
       <%= f.label :name, 'Post Name' %>
-      <%= f.text_field :name, :placeholder => "Insert Name Here"%>
+      <%= f.text_field :name, :placeholder => "Name"%>
       <br>
+      <%= f.text_area :body, :placeholder => "Body"%>
       <%= f.submit "Edit Post", class: "btn btn-large btn-primary" %></div>
 
   <% end %>

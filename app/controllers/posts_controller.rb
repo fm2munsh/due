@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	include SessionsHelper
 
 	def create
-		@post = Post.new(name: params[:post][:name], group_id: params[:group_id])
+		@post = Post.new(name: params[:post][:name], body: params[:post][:body], group_id: params[:group_id])
 		respond_to do |format|
 			if @post.save
 				format.js { render :template => "posts/create.js.erb", :content_type => 'text/javascript' }

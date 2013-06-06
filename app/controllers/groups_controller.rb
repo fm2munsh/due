@@ -1,8 +1,7 @@
 class GroupsController < ApplicationController
 	include SessionsHelper
 	def index
-		# @groups = current_user.groups
-		@groups = Group.all
+		@groups = current_user.groups
 	end
 
 	def new
@@ -33,14 +32,26 @@ class GroupsController < ApplicationController
 		@group = Group.find(params[:id])
 		if @group.users.include? @user
 			flash[:error] = "Already in Group"
+			flag = false
 		else
 			if @group.password == params[:password]
 				@group.users << @user
+				flag = true
 			else
 				flash[:error] = "Incorrect group password"
+				flag = false
 			end
 		end
-		redirect_to group_path @group
+		respond_to do |format|
+			if flag
+				puts "Sending Back join_success"
+				format.js { render :template => "groups/join_success", :content_type => 'text/javascript' }
+			else
+				puts "Sending Back join_error"
+				format.js { render :template => "groups/join_error", :content_type => 'text/javascript' }
+			end
+			format.html { redirect_to group_path(@group) }
+		end
 	end
 
   def show
